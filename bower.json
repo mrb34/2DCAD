@@ -8,6 +8,7 @@
   "license": "MIT",
   "homepage": "https://github.com/mrb34/2DCAD",
   "dependencies": {
-    "bootstrap": "^4.4.1"
+    "bootstrap": "^4.4.1",
+    "jquery": "^3.4.1"
   }
 }
