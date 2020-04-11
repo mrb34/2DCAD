@@ -54,7 +54,7 @@ function setupMouse(e) {
     e.addEventListener('mouseout', mouseMove);
     e.addEventListener('mouseover', mouseMove);
     e.addEventListener('mousewheel', mouseMove);
-   e.addEventListener('DOMMouseScroll', mouseMove); // fire fox
+    e.addEventListener('DOMMouseScroll', mouseMove); // fire fox
 
     e.addEventListener("contextmenu", function (e) {
        e.preventDefault();
@@ -203,6 +203,9 @@ var displayTransform = {
 
     }
 }
+
+
+
 // image to show
 var img = new Image();
 img.src = "https://upload.wikimedia.org/wikipedia/commons/e/e5/Fiat_500_in_Emilia-Romagna.jpg"
@@ -213,15 +216,7 @@ ctx.textBaseline = "middle";
 // timer for stuff
 var timer =0;
 
-/*
-var c = document.getElementById("myCanvas");
-var ctx = c.getContext("2d");
-ctx.beginPath();
-ctx.rect(20, 20, 150, 100);
-ctx.stroke();
 
-
-*/
 
 
 function update(){

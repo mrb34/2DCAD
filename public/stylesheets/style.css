@@ -1,4 +1,4 @@
-body {
+/* body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
@@ -6,3 +6,10 @@ body {
 a {
   color: #00B7FF;
 }
+*/
+.cursorClass {
+                cursor: none;
+            }
+      canvas {
+        border: 1px solid black;
+      }
