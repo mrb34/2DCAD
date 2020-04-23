@@ -1,5 +1,7 @@
 class DisplayTransform{
   constructor(ctx){
+    this.screenStatus=false;
+    this.copyTransform={};
     this.x=0;
     this.y=0;
     this.ox=0;
@@ -25,7 +27,51 @@ class DisplayTransform{
     this.mouseX=0;
     this.mouseY=0;
     this.ctx=ctx;
+
   }
+  //////////////////////////////////////////////////////////////////////////////
+
+
+defaultScreenOn(){
+
+
+      this.copyTransform={
+
+       x : this.x,
+       y : this.y,
+       scale : this.scale,
+       rotate : this.rotate,
+       ox: this.ox,
+       oy: this.oy
+     };
+
+      this.x = 0;
+      this.y = 0;
+      this.scale = 1;
+      this.rotate = 0;
+      this.ox = 0;
+      this.oy = 0;
+      this.setHome();
+
+    }
+
+ defaultScreenOff(){
+      this.x = this.copyTransform.x;
+      this.y = this.copyTransform.y;
+      this.scale =this.copyTransform.scale;
+      this.rotate = this.copyTransform.rotate;
+      this.ox = this.copyTransform.ox;
+      this.oy = this.copyTransform.oy;
+      this.setTransform();
+    }
+
+
+
+
+
+
+
+  //////////////////////////////////////////////////////////////////////////////
   setTransform(){
     var m = this.matrix;
     var i = 0;
@@ -120,7 +166,7 @@ class DisplayTransform{
                     mouse.w = 0;
                 }
             }
-   //console.log("sclae",this.scale);
+
         }
         // get the real mouse position
         var screenX = (mouse.x - this.cox);

@@ -42,14 +42,7 @@ function mouseMove(event) {
    } else if (event.type === "DOMMouseScroll") { // FF you pedantic doffus
      mouse.w = -event.detail;
    }
-
-
 }
-
-
-
-
-
 
 ////////////////////////////////////////////////////////////////////////////////
 function setupMouse(id) {
@@ -67,11 +60,12 @@ function setupMouse(id) {
   }, false);
 }
 
-
 let myCanvas = new Canvas('myCanvas', document.body, 1278, 520);
 myCanvas.create();
 myCanvas.createReportList();
-let mytext=new Text(myCanvas.ctx, myCanvas.listId,30,30,'blue','hello world')
+let mytext=new Text(myCanvas.ctx, myCanvas.listId,myCanvas.width-200,myCanvas.height-15,'blue','hello world')
+mytext.fontSize=13;
+
 let newcur= new Cursor(myCanvas.ctx,myCanvas.listId,625,290);
 //grapElements.push(newcur);
 newcur.draw();
@@ -93,26 +87,24 @@ function update(){
   displayTransform.update();
   // set home transform to clear the screem
   displayTransform.setHome();
-  myCanvas.ctx.clearRect(0,0,myCanvas.width,myCanvas.height);
+  myCanvas.clear();
+  displayTransform.setTransform();
 
 
-      displayTransform.setTransform();
 
-    mytext.draw();
-   //  ctx.drawImage(img,0,0);
+
    myCanvas.ctx.beginPath();
-   myCanvas.ctx.rect(0, 0, 100, 100);
+  myCanvas.ctx.rect(0, 0, 100, 100);
    myCanvas.ctx.stroke();
-   myCanvas.ctx.beginPath();
-   myCanvas.ctx.moveTo(0, 0);
+  myCanvas.ctx.beginPath();
+  myCanvas.ctx.moveTo(0, 0);
    myCanvas.ctx.lineTo(300, 150);
    myCanvas.ctx.stroke();
    myCanvas.ctx.fillStyle = "black";
 
 
 
-
-
+/*
 var copyTransform={
 
   x : displayTransform.x,
@@ -120,17 +112,20 @@ var copyTransform={
   scale : displayTransform.scale,
   rotate : displayTransform.rotate,
   ox: displayTransform.ox,
-      oy: displayTransform.oy
+  oy: displayTransform.oy
 };
 
   displayTransform.x = 0;
-       displayTransform.y = 0;
-       displayTransform.scale = 1;
-       displayTransform.rotate = 0;
-       displayTransform.ox = 0;
-       displayTransform.oy = 0;
+  displayTransform.y = 0;
+  displayTransform.scale = 1;
+  displayTransform.rotate = 0;
+  displayTransform.ox = 0;
+  displayTransform.oy = 0;
 
    displayTransform.setHome();
+   */
+   displayTransform.defaultScreenOn();
+
    newcur.position.x=mouse.x;
    newcur.position.y=mouse.y;
 
@@ -140,9 +135,13 @@ var copyTransform={
   myCanvas.ctx.rect(0, 0, 100, 100);
   myCanvas.ctx.stroke();
   myCanvas.ctx.strokeStyle="black"
+  mytext.text="Mouse Position : "+mouse.rx.toFixed(2)+"," + mouse.ry.toFixed(2);
 
+    mytext.draw();
   /////////////////////////////
-  displayTransform.x = copyTransform.x;
+displayTransform.defaultScreenOff();
+/*
+        displayTransform.x = copyTransform.x;
        displayTransform.y = copyTransform.y;
        displayTransform.scale =copyTransform.scale;
        displayTransform.rotate = copyTransform.rotate;
@@ -151,8 +150,8 @@ var copyTransform={
 
   displayTransform.setTransform();
   //console.log(mouse.rx);
-  //console.log(mouse.ry);
-
+  // console.log(mouse.ry);
+*/
 
   if(mouse.buttonRaw === 4){ // right click to return to homw
        displayTransform.x = 0;
